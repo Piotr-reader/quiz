@@ -1,16 +1,23 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Квест по выставке "Очарования Делакруа"</title>
-    <link rel="stylesheet" href="./pages/index.css">
+    <link rel="stylesheet" href="./vendor/normalize.css">
+    <link rel="stylesheet" href="./vendor/fonts/fonts.css">
+    <link rel="stylesheet" href="./style.css">
 </head>
 
 <body class="page">
     <header class="header">
+        <div class="score">
+            <div>Всего <span class="total_questions"></span> вопросов</div>
+            <div>Вы ответили на <span class="correct_answers"></span></div>
+            <div>Score <span class="quolity"></span>%</div>
+        </div>
         <h1 class="header__title">КВЕСТ ПО ВЫСТАВКЕ «ОЧАРОВАНИЯ ДЕЛАКРУА»</h1>
     </header>
 
@@ -165,7 +172,7 @@
             <form class="form">
                 <label class="form__label" for="third-puzzle">Ваш ответ:</label>
                 <input class="form__field" type="text" id="third-puzzle" name="third-puzzle"
-                    placeholder="Пример ответа: 1А2Б3В4Г5Д6Е" data-answer="1е2дзг4в5б6а">
+                    placeholder="Пример ответа: 1А2Б3В4Г5Д6Е" data-answer="1е2д3г4в5б6а">
                 <div class="form__button-container">
                     <button class="form__button form__button_type_submit third-puzzle" type="button">Ответить</button>
                     <button class="form__button form__button_type_hint third-puzzle" type="button">Узнать ответ</button>
@@ -240,7 +247,7 @@
                 пожалуйста, ИМЯ КРАСАВЦА, который фигурирует на&nbsp;работе, которая расположилась слева?</p>
             <form class="form">
                 <label class="form__label" for="five-puzzle">Ваш ответ:</label>
-                <input class="form__field" type="number" id="five-puzzle" name="five-puzzle"
+                <input class="form__field" type="text" id="five-puzzle" name="five-puzzle"
                     placeholder="Напишите, имя красавца..." data-answer="эжен">
                 <div class="form__button-container">
                     <button class="form__button form__button_type_submit five-puzzle" type="button">Ответить</button>
@@ -278,11 +285,11 @@
                 &laquo;аксессуаров&raquo; &laquo;украшает&raquo; работу, где он&nbsp;фигурирует?</p>
             <form class="form">
                 <label class="form__label" for="six-puzzle">Ваш ответ:</label>
-                <input class="form__field" type="text" id="six-puzzle" name="six-puzzle"
+                <input class="form__field" type="number" id="six-puzzle" name="six-puzzle"
                     placeholder="Например: 13" data-answer="17">
                 <div class="form__button-container">
-                    <button class="form__button form__button_type_submit six-puzzle" type="button" value="Ответить"></button>
-                    <button class="form__button form__button_type_cheat six-puzzle" type="submit" value="Узнать ответ"></button>
+                    <button class="form__button form__button_type_submit six-puzzle" type="button">Ответить</button>
+                    <button class="form__button form__button_type_hint six-puzzle" type="button">Узнать ответ</button>
                 </div>
             </form>
             <div class="correct-answer-board six-puzzle">
@@ -351,25 +358,26 @@
             <iframe class="puzzle__video" id="ytplayer" type="text/html" width="720" height="405"
                 src="https://www.youtube.com/embed/wNaeHHKW3RE" frameborder="0" allowfullscreen></iframe>
         </section>
-
-        <footer class="footer">
-            <h2 class="footer__heading">Наши социальные сети</h2>
-            <nav>
-                <ul class="footer__links-list">
-                    <li class="footer__links-list-item"><a href="#" class="footer__link" lang="en"><img
-                                class="footer__social-icon" src="./images/instagram_color_white.svg"
-                                alt="Instagram">Instagram</a>
-                    </li>
-                    <li class="footer__links-list-item"><a href="#" class="footer__link" lang="en"><img
-                                class="footer__social-icon" src="./images/facebook_color_white.svg"
-                                alt="Facebook">Facebook</a></li>
-                    <li class="footer__links-list-item"><a href="#" class="footer__link"><img
-                                class="footer__social-icon" src="./images/vk_color_white.svg"
-                                alt="ВКонтакте">ВКонтакте</a></li>
-                </ul>
-            </nav>
-        </footer>
     </main>
+
+    <footer class="content footer">
+        <h2 class="footer__heading">Наши социальные сети</h2>
+        <nav>
+            <ul class="footer__links-list">
+                <li class="footer__links-list-item"><a href="#" class="footer__link" lang="en"><img
+                            class="footer__social-icon" src="./images/instagram_color_white.svg"
+                            alt="Instagram">Instagram</a>
+                </li>
+                <li class="footer__links-list-item"><a href="#" class="footer__link" lang="en"><img
+                            class="footer__social-icon" src="./images/facebook_color_white.svg"
+                            alt="Facebook">Facebook</a></li>
+                <li class="footer__links-list-item"><a href="#" class="footer__link"><img
+                            class="footer__social-icon" src="./images/vk_color_white.svg"
+                            alt="ВКонтакте">ВКонтакте</a></li>
+            </ul>
+        </nav>
+    </footer>
+
     <script src="./script.js"></script>
 </body>
 
