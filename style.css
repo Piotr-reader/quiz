@@ -342,15 +342,9 @@
        transition: .3s ease-in;
 }
 .checked_answer {
-    position: relative;
     width: 13px;
     height: 13px;
     display: none;
+    color: green;
 }
-.checked_answer::before{
-content: "\2714";
-color: green;
-position: absolute;
-left: -20px;
-top: -5px;
-}
+
