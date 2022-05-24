@@ -2,8 +2,10 @@ let arrNumber = [];
 let arrAnswer = [];
 const allInput = document.querySelectorAll(".form__field");
 const allBtn = document.querySelectorAll(".form__button");
+const btnReset = document.querySelector(".btn_reset");
 const totalQuestions = allInput.length;
 document.querySelector(`.total_questions`).innerHTML = totalQuestions;
+
 
 allBtn.forEach((btn) => {
   btn.addEventListener("click", () => {
@@ -21,7 +23,6 @@ allBtn.forEach((btn) => {
             arrNumber = [...new Set(arrNumber)];
             localStorage.setItem('numberPuzzle', JSON.stringify(arrNumber));
             arrAnswer.push(inputVal);
-            console.log(arrAnswer);
             arrAnswer = [...new Set(arrAnswer)];
             localStorage.setItem('answers', JSON.stringify(arrAnswer));
             let correctAnswers = arrAnswer.length;
@@ -58,6 +59,45 @@ if (localstorageAnswers !== null) {
     let correctAnswers = arrAnswer.length;
     document.querySelector(`.correct_answers`).innerHTML = correctAnswers;
     document.querySelector(`.quolity`).innerHTML = Math.floor((correctAnswers/totalQuestions)*100);
-  }
+}
+
+btnReset.addEventListener("click", () => {
+  arrNumber = [];
+  arrAnswer = [];
+  localStorage.clear()
+  allInput.forEach((input) => {
+    input.value = "";
+    document.querySelector(`.correct-answer-board.${input.id}`).style.display = "none";
+    document.querySelector(`.correct_answers`).innerHTML = 0;
+    document.querySelector(`.quolity`).innerHTML = 0;
+  });
+});
 
 
+// burger
+const burger = document.querySelector(".header_burger");
+const navbar = document.querySelector(".navbar");
+const body = document.querySelector("body");
+const navbarText = document.querySelectorAll(".navbar_text");
+
+burger.addEventListener("mousedown", () => {
+    navbar.classList.toggle('active_burger');
+    burger.classList.toggle('active_burger_burger');
+    body.classList.toggle('lock');
+});
+navbarText.forEach(text => {
+  text.addEventListener('click', () => {
+      body.classList.remove('lock');
+      navbar.classList.remove('active_burger');
+      burger.classList.remove('active_burger_burger');
+  })
+})
+if (navbar.hasAttributes('active_burger')) {
+    navbar.addEventListener('mousedown', (e) => {
+      if (!e.target.closest('.navbar_width'))  {
+          navbar.classList.remove('active_burger');
+          burger.classList.remove('active_burger_burger');
+          body.classList.remove('lock');
+      }
+    })
+}

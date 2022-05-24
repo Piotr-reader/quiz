@@ -13,18 +13,41 @@
 
 <body class="page">
     <header class="header">
+        <div class="logo">
+            <h1 class="header_logo">farba</h1>
+            <img class="header_logo_img" src="./images/logo_farba.jpg" alt="logo">
+        </div>
         <div class="score">
-            <div>Всего <span class="total_questions"></span> вопросов</div>
-            <div>Вы ответили на <span class="correct_answers">0</span></div>
+            <div>Всего вопросов: <span class="total_questions"></span></div>
+            <div>Вы ответили на: <span class="correct_answers">0</span></div>
             <div>Score <span class="quolity">0</span>%</div>
         </div>
-        <h1 class="header__title">КВЕСТ ПО ВЫСТАВКЕ «ОЧАРОВАНИЯ ДЕЛАКРУА»</h1>
+        <div class="header_btn">
+            <button class="form__button btn_reset" type="button">Сбросить</button>
+        </div>
+        <div class="header_burger">
+            <span></span>
+          </div>
+          <nav class="navbar_container">
+            <div class="navbar">
+              <ul class="navbar_width">
+                  <li><a class="navbar_text" href="#section_1">Вопрос 1</a></li>
+                  <li><a class="navbar_text" href="#section_2">Вопрос 2</a></li>
+                  <li><a class="navbar_text" href="#section_3">Вопрос 3</a></li>
+                  <li><a class="navbar_text" href="#section_4">Вопрос 4</a></li>
+                  <li><a class="navbar_text" href="#section_5">Вопрос 5</a></li>
+                  <li><a class="navbar_text" href="#section_6">Вопрос 6</a></li>
+                  <li><a class="navbar_text" href="#section_7">Вопрос 7</a></li>
+              </ul>
+            </div>
+          </nav>
     </header>
 
     <main class="content">
+        <h1 class="header__title">КВЕСТ ПО ВЫСТАВКЕ «ОЧАРОВАНИЯ ДЕЛАКРУА»</h1>
 
         <section class="description">
-            <img class="description__image" src="./images/description__image.gif">
+            <img class="description__image" src="./images/logo_farba.jpg">
             <h2 class="description__title">Несколько рекомендаций по&nbsp;прохождению квеста!</h2>
             <ul class="description__text">
                 <li class="description__text-item">Не&nbsp;бросайтесь проходить квест сразу&nbsp;&mdash; для начала
@@ -42,7 +65,7 @@
             </ul>
         </section>
 
-        <section class="puzzle">
+        <section class="puzzle" id="section_1">
             <h2 class="puzzle__number">1.</h2>
             <p class="puzzle__text">Для разминки, как нам кажется, несложное задание.</p>
             <p class="puzzle__text">ОН&nbsp;&mdash; это и&nbsp;серия космических кораблей США, и&nbsp;&laquo;хорошо
@@ -84,7 +107,7 @@
                 src="https://www.youtube.com/embed/704nRRLQesE" frameborder="0" allowfullscreen></iframe>
         </section>
 
-        <section class="puzzle">
+        <section class="puzzle" id="section_2">
             <h2 class="puzzle__number">2.</h2>
             <p class="puzzle__text">Старые-добрые ребусы снова в&nbsp;нашем квесте. Как у&nbsp;вас обстоят дела
                 с&nbsp;ребусами? Сколько
@@ -124,7 +147,7 @@
                 src="https://www.youtube.com/embed/F9FqruAP_mU" frameborder="0" allowfullscreen></iframe>
         </section>
 
-        <section class="puzzle">
+        <section class="puzzle" id="section_3">
             <h2 class="puzzle__number">3.</h2>
             <p class="puzzle__text">Давайте проверим, насколько хорошо вы&nbsp;изучили биографию Эжена Делакруа.
                 Соотнесите, пожалуйста, даты и&nbsp;события из&nbsp;его жизни.</p>
@@ -198,7 +221,7 @@
                 src="https://www.youtube.com/embed/CisKFPrxAhE" frameborder="0" allowfullscreen></iframe>
         </section>
 
-        <section class="puzzle">
+        <section class="puzzle" id="section_4">
             <h2 class="puzzle__number">4.</h2>
             <p class="puzzle__text">Как у&nbsp;вас было с&nbsp;географией в&nbsp;школе? Если не&nbsp;очень,
                 то&nbsp;пришло время исправиться!</p>
@@ -239,7 +262,7 @@
                 src="https://www.youtube.com/embed/TGbBtAYzetw" frameborder="0" allowfullscreen></iframe>
         </section>
 
-        <section class="puzzle">
+        <section class="puzzle" id="section_5">
             <h2 class="puzzle__number">5.</h2>
             <p class="puzzle__text">Хорошо изучили выставку? Тогда вот вам еще одно задание!</p>
             <p class="puzzle__text">ОНИ родились с&nbsp;разницей примерно в&nbsp;545 лет и&nbsp;при этом вместе
@@ -278,7 +301,7 @@
                 src="https://www.youtube.com/embed/1oxZ4PkOoXQ" frameborder="0" allowfullscreen></iframe>
         </section>
 
-        <section class="puzzle">
+        <section class="puzzle" id="section_6">
             <h2 class="puzzle__number">6.</h2>
             <p class="puzzle__text">Согласно одной известной пословице, ОН&nbsp;&laquo;хуже татарина&raquo;. Задача
                 достаточна проста: найдите ЕГО в&nbsp;экспозиции и&nbsp;напишите, пожалуйста, сколько
@@ -315,7 +338,7 @@
                 src="https://www.youtube.com/embed/yR534LAcWOI" frameborder="0" allowfullscreen></iframe>
         </section>
 
-        <section class="puzzle">
+        <section class="puzzle" id="section_7">
             <h2 class="puzzle__number">7.</h2>
             <p class="puzzle__text">Вы&nbsp;видите еще одно зашифрованное название работы из&nbsp;экспозиции.
                 Подумайте, что вы&nbsp;видите на&nbsp;изображении и&nbsp;ищите работу с&nbsp;таким названием.</p>
