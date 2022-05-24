@@ -123,6 +123,7 @@ const srcIFrameArr = ["704nRRLQesE", "704nRRLQesE", "F9FqruAP_mU", "CisKFPrxAhE"
 window.onload = function () {
   for (let i = 0; i < srcIFrameArr.length; i++) {
     [...iFrameAll][i].setAttribute("src", `${srcYouTube}${srcIFrameArr[i]}`);
+    // [...iFrameAll][i].setAttribute("sandbox", "");
   }
 };
 // popup reset score
