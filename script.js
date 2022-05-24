@@ -2,6 +2,7 @@ let arrNumber = [];
 let arrAnswer = [];
 const allInput = document.querySelectorAll(".form__field");
 const allBtn = document.querySelectorAll(".form__button");
+const checkedAnswer = document.querySelectorAll(".checked_answer");
 const btnReset = document.querySelector(".btn_reset");
 const totalQuestions = allInput.length;
 document.querySelector(`.total_questions`).innerHTML = totalQuestions;
@@ -16,6 +17,7 @@ allBtn.forEach((btn) => {
         if (btn.classList.contains("form__button_type_submit")) {
           if (inputVal.toLowerCase() === input.dataset.answer) {
             document.querySelector(`.correct-answer-board.${numberPuzzle}`).style.display = "block";
+            document.querySelector(`.checked_answer.${numberPuzzle}`).style.display = "block";
             document.querySelector(`.wrong-answer-board.${numberPuzzle}`).style.display = "none";
             document.querySelector(`.hint-board.${numberPuzzle}`).style.display = "none";
             // btn.setAttribute("disabled", "disabled");
@@ -32,11 +34,13 @@ allBtn.forEach((btn) => {
             document.querySelector(`.wrong-answer-board.${numberPuzzle}`).style.display = "block";
             document.querySelector(`.correct-answer-board.${numberPuzzle}`).style.display = "none";
             document.querySelector(`.hint-board.${numberPuzzle}`).style.display = "none";
+            document.querySelector(`.checked_answer.${numberPuzzle}`).style.display = "none";
           }
         } else if (btn.classList.contains("form__button_type_hint")) {
           document.querySelector(`.hint-board.${numberPuzzle}`).style.display = "block";
           document.querySelector(`.wrong-answer-board.${numberPuzzle}`).style.display = "none";
           document.querySelector(`.correct-answer-board.${numberPuzzle}`).style.display = "none";
+          document.querySelector(`.checked_answer.${numberPuzzle}`).style.display = "none";
         }
       }
     });
@@ -51,6 +55,7 @@ if (localstorageAnswers !== null) {
     for (let i = 0; i < answers.length; i++) {
       document.getElementById(`${numberPuzzle[i]}`).value = answers[i];
       document.querySelector(`.correct-answer-board.${numberPuzzle[i]}`).style.display = "block";
+      document.querySelector(`.checked_answer.${numberPuzzle[i]}`).style.display = "block";
       arrNumber.push(numberPuzzle[i]);
       arrNumber = [...new Set(arrNumber)];
       arrAnswer.push(answers[i]);
@@ -68,6 +73,7 @@ btnReset.addEventListener("click", () => {
   allInput.forEach((input) => {
     input.value = "";
     document.querySelector(`.correct-answer-board.${input.id}`).style.display = "none";
+    document.querySelector(`.checked_answer.${input.id}`).style.display = "none";
     document.querySelector(`.correct_answers`).innerHTML = 0;
     document.querySelector(`.quolity`).innerHTML = 0;
   });

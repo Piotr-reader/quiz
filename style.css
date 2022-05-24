@@ -291,6 +291,9 @@
 .navbar li {
     margin-bottom: 7px;
     list-style-type: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 .navbar_width {
     width: 360px;
@@ -311,7 +314,7 @@
     color:beige;
 }
   .active_burger {
-    left: -1px;
+    left: 0px;
     transition: .3s ease-in;
 }
 
@@ -333,8 +336,21 @@
     top: 20px;
     transition: .3s;
   }
-   .lock {
+.lock {
        /* overflow: hidden; */
        background: rgba(41, 41, 41, 0.6);
        transition: .3s ease-in;
-   }
+}
+.checked_answer {
+    position: relative;
+    width: 13px;
+    height: 13px;
+    display: none;
+}
+.checked_answer::before{
+content: "\2714";
+color: green;
+position: absolute;
+left: -20px;
+top: -5px;
+}
