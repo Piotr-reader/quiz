@@ -117,7 +117,7 @@ if (navbar.hasAttributes("active_burger")) {
   });
 }
 
-// popup
+// popup reset score
 btnPopupReset.addEventListener("mousedown", (e) => {
   POPUP.classList.add("open");
   POPUP_BODY.classList.add("lock");
@@ -142,3 +142,12 @@ if (POPUP.hasAttributes("popup_open")) {
     }
   });
 }
+
+const iFrameAll = document.querySelectorAll(".puzzle__video");
+const srcYouTube = "https://www.youtube.com/embed/";
+const srcIFrameArr = ["704nRRLQesE", "704nRRLQesE", "F9FqruAP_mU", "CisKFPrxAhE", "TGbBtAYzetw", "1oxZ4PkOoXQ", "yR534LAcWOI", "wNaeHHKW3RE"];
+window.onload = function () {
+  for (let i = 0; i < srcIFrameArr.length; i++) {
+    [...iFrameAll][i].setAttribute("src", `${srcYouTube}${srcIFrameArr[i]}`);
+  }
+};
