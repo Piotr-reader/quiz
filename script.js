@@ -116,7 +116,15 @@ if (navbar.hasAttributes("active_burger")) {
     }
   });
 }
-
+// onload src for iframe
+const iFrameAll = document.querySelectorAll(".puzzle__video");
+const srcYouTube = "https://www.youtube.com/embed/";
+const srcIFrameArr = ["704nRRLQesE", "704nRRLQesE", "F9FqruAP_mU", "CisKFPrxAhE", "TGbBtAYzetw", "1oxZ4PkOoXQ", "yR534LAcWOI", "wNaeHHKW3RE"];
+window.onload = function () {
+  for (let i = 0; i < srcIFrameArr.length; i++) {
+    [...iFrameAll][i].setAttribute("src", `${srcYouTube}${srcIFrameArr[i]}`);
+  }
+};
 // popup reset score
 btnPopupReset.addEventListener("mousedown", (e) => {
   POPUP.classList.add("open");
@@ -142,12 +150,66 @@ if (POPUP.hasAttributes("popup_open")) {
     }
   });
 }
-
-const iFrameAll = document.querySelectorAll(".puzzle__video");
-const srcYouTube = "https://www.youtube.com/embed/";
-const srcIFrameArr = ["704nRRLQesE", "704nRRLQesE", "F9FqruAP_mU", "CisKFPrxAhE", "TGbBtAYzetw", "1oxZ4PkOoXQ", "yR534LAcWOI", "wNaeHHKW3RE"];
-window.onload = function () {
-  for (let i = 0; i < srcIFrameArr.length; i++) {
-    [...iFrameAll][i].setAttribute("src", `${srcYouTube}${srcIFrameArr[i]}`);
+// popup gift
+const btnPopupGift = document.querySelector(".btn_gift");
+btnPopupGift.addEventListener("mousedown", (e) => {
+  popupGiftOpen();
+});
+POPUP_CLOSE.addEventListener("mousedown", () => {
+  popupGiftClose();
+});
+if (POPUP.hasAttributes("popup_open")) {
+  BODY.addEventListener("mousedown", (e) => {
+    if (e.target.classList.value === "popup_body") {
+      popupGiftClose();
+    }
+  });
+}
+let textGift = "";
+const popupGiftOpen = () => {
+  POPUP.classList.add("open");
+  POPUP_BODY.classList.add("lock");
+  POPUP_TITLE.classList.add("active_title");
+  document.querySelector(".popup_reset_btn").style.display = "none";
+  valueScore();
+  document.querySelector(".popup_description").innerHTML = textGift;
+};
+const popupGiftClose = () => {
+  POPUP.classList.remove("open");
+  POPUP_BODY.classList.remove("lock");
+  POPUP_TITLE.classList.remove("active_title");
+  document.querySelector(".popup_reset_btn").style.display = "flex";
+  document.querySelector(".popup_img").style.display = "none";
+  document.querySelector(".popup_description").innerHTML = "Вы уверены что хотите сбросить результат?";
+};
+const valueScore = () => {
+  switch (document.querySelector(".correct_answers").innerHTML) {
+    case "0":
+      textGift = "Вы серъёзно? Ответьте хотябы на несколько вопросов.";
+      break;
+    case "1":
+      textGift = "Уже что-то! Но этого все равно слишком мало.";
+      break;
+    case "2":
+      textGift = "Да вы прям знаток искусства! Не стоит останавливаться.";
+      break;
+    case "3":
+      textGift = "Вот это запал! Ещё немного и Вы у цели.";
+      break;
+    case "4":
+      textGift = "Круто!!!";
+      break;
+    case "5":
+      textGift = "Этого не может быть. Супер эрудиция!";
+      break;
+    case "6":
+      textGift = "Завидую вашим знаниям. Вы в одном шаге до приза";
+      break;
+    case "7":
+      document.querySelector(".popup_img").style.display = "block";
+      textGift = "Поздравляю, Вы настоящий знаток Шагала!";
+      break;
+    default:
+      break;
   }
 };
