@@ -62,7 +62,7 @@
                 <li class="description__text-item">Чтобы пройти квест, обращайте внимание на&nbsp;работы всех авторов.
                 </li>
                 <li class="description__text-item">Если вы&nbsp;правильно ответите на&nbsp;все вопросы квеста,
-                    то&nbsp;получите приятный бонус от&nbsp;LIBRA.</li>
+                    то&nbsp;получите приятный бонус от&nbsp;FARBA.</li>
             </ul>
         </section>
 
@@ -77,7 +77,7 @@
             <form class="form">
                 <label class="form__label" for="first-puzzle">Ваш ответ:</label>
                 <input class="form__field" type="number" min="1800" max="2022" id="first-puzzle" name="fisrt-puzzle"
-                    placeholder="Например: 1984" data-answer="2021">
+                    placeholder="Например: 1984" autocomplete="off" data-answer="2021">
                 <div class="form__button-container">
                     <button class="form__button form__button_type_submit first-puzzle" type="button">Ответить</button>
                     <button class="form__button form__button_type_hint first-puzzle" type="button">Узнать ответ</button>
@@ -89,8 +89,7 @@
                     ответ&raquo;.</p>
             </div>
             <div class="correct-answer-board first-puzzle">
-                <p class="correct-answer-board__text">Поздравляем! Начало положено, вы&nbsp;разгадали первое
-                    из&nbsp;семи заданий.</p>
+                <p class="correct-answer-board__text first-puzzle"></p>
             </div>
             <div class="hint-board first-puzzle">
                 <p class="hint-board__text">Серия космических кораблей США, &laquo;хорошо сложенный красивый
@@ -121,17 +120,17 @@
             <form class="form">
                 <label class="form__label" for="first-puzzle">Ваш ответ:</label>
                 <input class="form__field" type="text" id="second-puzzle" name="second-puzzle"
-                    placeholder="Напишите, кто или что напротив..." data-answer="канатоходцы">
+                    placeholder="Напишите, кто или что напротив..." autocomplete="off" data-answer="канатоходцы">
                 <div class="form__button-container">
                     <button class="form__button form__button_type_submit second-puzzle" type="button">Ответить</button>
                     <button class="form__button form__button_type_hint second-puzzle" type="button">Узнать ответ</button>
                 </div>
             </form>
             <div class="correct-answer-board second-puzzle">
-                <p class="correct-answer-board__text">Отлично! Два задания из&nbsp;семи уже позади.</p>
+                <p class="correct-answer-board__text second-puzzle"></p>
             </div>
             <div class="wrong-answer-board second-puzzle">
-                <p class="wrong-answer-board__text">К&nbsp;сожалению, это неправильный ответ. Попробуйте еще раз!
+                <p class="wrong-answer-board__text second-puzzle">К&nbsp;сожалению, это неправильный ответ. Попробуйте еще раз!
                     Помните, что можно воспользоваться видеоподсказками или нажать на&nbsp;кнопку &laquo;Узнать
                     ответ&raquo;.</p>
             </div>
@@ -196,18 +195,17 @@
             <form class="form">
                 <label class="form__label" for="third-puzzle">Ваш ответ:</label>
                 <input class="form__field" type="text" id="third-puzzle" name="third-puzzle"
-                    placeholder="Пример ответа: 1А2Б3В4Г5Д6Е" data-answer="1е2д3г4в5б6а">
+                    placeholder="Пример ответа: 1А2Б3В4Г5Д6Е" autocomplete="off" data-answer="1е2д3г4в5б6а">
                 <div class="form__button-container">
                     <button class="form__button form__button_type_submit third-puzzle" type="button">Ответить</button>
                     <button class="form__button form__button_type_hint third-puzzle" type="button">Узнать ответ</button>
                 </div>
             </form>
             <div class="correct-answer-board third-puzzle">
-                <p class="correct-answer-board__text">Почти половина квеста уже пройдена! Три задания из&nbsp;семи
-                    покорились вам.</p>
+                <p class="correct-answer-board__text third-puzzle"></p>
             </div>
             <div class="wrong-answer-board third-puzzle">
-                <p class="wrong-answer-board__text">К&nbsp;сожалению, это неправильный ответ. Попробуйте еще раз!
+                <p class="wrong-answer-board__text third-puzzle">К&nbsp;сожалению, это неправильный ответ. Попробуйте еще раз!
                     Помните, что можно воспользоваться видеоподсказками или нажать на&nbsp;кнопку &laquo;Узнать
                     ответ&raquo;.</p>
             </div>
@@ -233,15 +231,14 @@
             <form class="form">
                 <label class="form__label" for="four-puzzle">Ваш ответ:</label>
                 <input class="form__field" type="text" id="four-puzzle" name="four-puzzle"
-                    placeholder="Напишите, какой знак зодиака..." data-answer="лев">
+                    placeholder="Напишите, какой знак зодиака..." autocomplete="off" data-answer="лев">
                 <div class="form__button-container">
                     <button class="form__button form__button_type_submit four-puzzle" type="button">Ответить</button>
                     <button class="form__button form__button_type_hint four-puzzle" type="button">Узнать ответ</button>
                 </div>
             </form>
             <div class="correct-answer-board four-puzzle">
-                <p class="correct-answer-board__text">Ого, вы&nbsp;ответили уже на&nbsp;четыре задания из&nbsp;семи!
-                    Осталось всего ничего.</p>
+                <p class="correct-answer-board__text four-puzzle"></p>
             </div>
             <div class="wrong-answer-board four-puzzle">
                 <p class="wrong-answer-board__text">К&nbsp;сожалению, это неправильный ответ. Попробуйте еще раз!
@@ -272,15 +269,14 @@
             <form class="form">
                 <label class="form__label" for="five-puzzle">Ваш ответ:</label>
                 <input class="form__field" type="text" id="five-puzzle" name="five-puzzle"
-                    placeholder="Напишите, имя красавца..." data-answer="эжен">
+                    placeholder="Напишите, имя красавца..." autocomplete="off" data-answer="эжен">
                 <div class="form__button-container">
                     <button class="form__button form__button_type_submit five-puzzle" type="button">Ответить</button>
                     <button class="form__button form__button_type_hint five-puzzle" type="button">Узнать ответ</button>
                 </div>
             </form>
             <div class="correct-answer-board five-puzzle">
-                <p class="correct-answer-board__text">Пятое задание из&nbsp;семи тоже за&nbsp;вами, осталось всего два!
-                </p>
+                <p class="correct-answer-board__text five-puzzle"></p>
             </div>
             <div class="wrong-answer-board five-puzzle">
                 <p class="wrong-answer-board__text">К&nbsp;сожалению, это неправильный ответ. Попробуйте еще раз!
@@ -310,15 +306,14 @@
             <form class="form">
                 <label class="form__label" for="six-puzzle">Ваш ответ:</label>
                 <input class="form__field" type="number" id="six-puzzle" name="six-puzzle"
-                    placeholder="Например: 13" data-answer="17">
+                    placeholder="Например: 13" autocomplete="off" data-answer="17">
                 <div class="form__button-container">
                     <button class="form__button form__button_type_submit six-puzzle" type="button">Ответить</button>
                     <button class="form__button form__button_type_hint six-puzzle" type="button">Узнать ответ</button>
                 </div>
             </form>
             <div class="correct-answer-board six-puzzle">
-                <p class="correct-answer-board__text">Супер, вы&nbsp;ответили на&nbsp;шесть заданий из&nbsp;семи! Даже
-                    немного грустно, что осталось всего одно.</p>
+                <p class="correct-answer-board__text six-puzzle"></p>
             </div>
             <div class="wrong-answer-board six-puzzle">
                 <p class="wrong-answer-board__text">К&nbsp;сожалению, это неправильный ответ. Попробуйте еще раз!
@@ -348,21 +343,14 @@
             <form class="form">
                 <label class="form__label" for="seven-puzzle">Ваш ответ:</label>
                 <input class="form__field" type="text" id="seven-puzzle" name="seven-puzzle"
-                    placeholder="Напишите итальянский город..." data-answer="арколе">
+                    placeholder="Напишите итальянский город..." autocomplete="off" data-answer="арколе">
                 <div class="form__button-container">
                     <button class="form__button form__button_type_submit seven-puzzle" type="button">Ответить</button>
                     <button class="form__button form__button_type_hint seven-puzzle" type="button">Узнать ответ</button>
                 </div>
             </form>
             <div class="correct-answer-board seven-puzzle">
-                <p class="correct-answer-board__text">Семь из&nbsp;семи, наши поздравления! Теперь можете получить свой
-                    бонус у&nbsp;администратора.</p>
-                <p class="correct-answer-board__text">
-                    Надеемся, что вам понравилось! Если квест, действительно, пришёлся вам по&nbsp;душе или есть
-                    какие-то пожелания по&nbsp;нему, то&nbsp;будем признательны, если упомянете об&nbsp;этом
-                    в&nbsp;своих социальных сетях, отметив при этом нас&mdash; нам будет о-о-очень приятно! В&nbsp;любом
-                    случае, будем рады если подпишетесь на&nbsp;наши социальные сети, которые найдете внизу страницы
-                    <span>&#129303</span>
+                <p class="correct-answer-board__text seven-puzzle">
                 </p>
             </div>
             <div class="wrong-answer-board seven-puzzle">
@@ -388,14 +376,14 @@
         <h2 class="footer__heading">Наши социальные сети</h2>
         <nav>
             <ul class="footer__links-list">
-                <li class="footer__links-list-item"><a href="#" class="footer__link" lang="en"><img
+                <li class="footer__links-list-item"><a href="https://www.instagram.com/farba.gallery/" class="footer__link" target="_blank" lang="en"><img
                             class="footer__social-icon" src="./images/instagram_color_white.svg"
                             alt="Instagram">Instagram</a>
                 </li>
-                <li class="footer__links-list-item"><a href="#" class="footer__link" lang="en"><img
+                <li class="footer__links-list-item"><a href="https://www.facebook.com/%D0%93%D0%B0%D0%BB%D0%B5%D1%80%D0%B5%D1%8F-Farba-102809942450762" target="_blank" class="footer__link" lang="en"><img
                             class="footer__social-icon" src="./images/facebook_color_white.svg"
                             alt="Facebook">Facebook</a></li>
-                <li class="footer__links-list-item"><a href="#" class="footer__link"><img
+                <li class="footer__links-list-item"><a href="https://vk.com/farba.gallery" target="_blank" class="footer__link"><img
                             class="footer__social-icon" src="./images/vk_color_white.svg"
                             alt="ВКонтакте">ВКонтакте</a></li>
             </ul>
@@ -409,7 +397,10 @@
             <div class="popup_title">
                 <div class="popup_text">
                     <p class="popup_description">Вы уверены что хотите сбросить результат?</p>
-                    <img class="popup_img" src="./images/farba_templogo.jpg" alt="picture">
+                    <div class="popup_gift">
+                        <img class="popup_img" src="./images/farba_templogo.jpg" alt="picture">
+                        <div class="popup_data"></div>
+                    </div>
                 </div>
                 <div class="popup_reset_btn">
                     <button class="form__button btn_reset" type="button">Сбросить</button>

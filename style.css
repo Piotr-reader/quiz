@@ -236,6 +236,14 @@
   line-height: 1;
   display: flex;
 }
+.footer__link {
+  text-decoration: none;
+  color: #fff;
+}
+.footer__link:hover {
+  text-decoration: none;
+  color: beige;
+}
 .footer__links-list {
   display: flex;
   justify-content: space-between;
@@ -318,6 +326,7 @@
   margin-left: 0px;
   margin-bottom: 10px;
   color: #fff;
+  text-decoration: none;
 }
 .navbar_text:hover {
   text-decoration: none;
@@ -395,7 +404,7 @@
   padding: 30px 50px;
 }
 .popup_content {
-  max-width: 320px;
+  min-width: 320px;
   background-color: #fafafa;
   border-radius: 9px;
   box-shadow: 0px 2px 35px 14px rgba(13, 13, 13, 0.04);
@@ -429,11 +438,27 @@
   background: #fddcc4 !important;
   border: 2px solid #fddcc4 !important;
 }
-
+.popup_gift {
+  position: relative;
+}
 .popup_img {
   width: 300px;
   border-radius: 9px;
   display: none;
+  box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.2);;
+}
+.popup_data {
+  position: absolute;
+  right: 20px;
+  top: 260px;
+  background-color: white;
+  border-radius: 9px;
+  width: fit-content;
+  padding: 0px 5px;
+  box-sizing: border-box;
+  border: 1px solid grey;
+  display: none;
+  color: black;
 }
 .popup_description {
   font-family: "Georgia";
@@ -442,7 +467,7 @@
   letter-spacing: 0.1em;
   color: #000000;
   margin: 40px 0;
-  max-width: 350px;
+  max-width: 300px;
   font-size: 15px;
   margin-bottom: 24px;
   line-height: 14px;

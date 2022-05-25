@@ -1,3 +1,13 @@
+const arrCorrectAnswers = [`Поздравляем! Начало положено, вы&nbsp;разгадали первое
+из&nbsp;семи заданий.`, `Отлично! Два задания из&nbsp;семи уже позади.`, `Почти половина квеста уже пройдена! Три задания из&nbsp;семи
+покорились вам.`, `Ого, вы&nbsp;ответили уже на&nbsp;четыре задания из&nbsp;семи!
+Осталось всего ничего.`, `Пятое задание из&nbsp;семи тоже за&nbsp;вами, осталось всего два!`, `Супер, вы&nbsp;ответили на&nbsp;шесть заданий из&nbsp;семи! Даже
+немного грустно, что осталось всего одно.`, `Семь из&nbsp;семи, наши поздравления! Теперь можете получить свой
+бонус у&nbsp;администратора. <br>  Надеемся, что вам понравилось! Если квест, действительно, пришёлся вам по&nbsp;душе или есть
+какие-то пожелания по&nbsp;нему, то&nbsp;будем признательны, если упомянете об&nbsp;этом
+в&nbsp;своих социальных сетях, отметив при этом нас&mdash; нам будет о-о-очень приятно! В&nbsp;любом
+случае, будем рады если подпишетесь на&nbsp;наши социальные сети, которые найдете внизу страницы
+<span>&#129303</span>`];
 const btnPopupReset = document.querySelector(".btn__popup_reset");
 const btnCancel = document.querySelector(".btn_cancel");
 const BODY = document.querySelector(".popup_body");
@@ -13,16 +23,18 @@ const allBtn = document.querySelectorAll(".form__button");
 const checkedAnswer = document.querySelectorAll(".checked_answer");
 const btnReset = document.querySelector(".btn_reset");
 const totalQuestions = allInput.length;
+
 document.querySelector(`.total_questions`).innerHTML = totalQuestions;
 
 allBtn.forEach((btn) => {
-  btn.addEventListener("click", () => {
+  btn.addEventListener("click", (e) => {
     allInput.forEach((input) => {
       if (btn.classList.contains(input.id)) {
         let numberPuzzle = input.id;
         let inputVal = input.value;
         if (btn.classList.contains("form__button_type_submit")) {
           if (inputVal.toLowerCase() === input.dataset.answer) {
+            const correctAnswerBoardText = document.querySelector(`.correct-answer-board__text.${numberPuzzle}`);
             document.querySelector(`.correct-answer-board.${numberPuzzle}`).style.display = "block";
             document.querySelector(`.checked_answer.${numberPuzzle}`).style.display = "block";
             document.querySelector(`.wrong-answer-board.${numberPuzzle}`).style.display = "none";
@@ -37,6 +49,7 @@ allBtn.forEach((btn) => {
             let correctAnswers = arrAnswer.length;
             document.querySelector(`.correct_answers`).innerHTML = correctAnswers;
             document.querySelector(`.quolity`).innerHTML = Math.floor((correctAnswers / totalQuestions) * 100);
+            correctAnswer(correctAnswerBoardText);
           } else {
             document.querySelector(`.wrong-answer-board.${numberPuzzle}`).style.display = "block";
             document.querySelector(`.correct-answer-board.${numberPuzzle}`).style.display = "none";
@@ -54,6 +67,39 @@ allBtn.forEach((btn) => {
   });
 });
 
+const correctAnswer = (correctAnswerBoardText) => {
+  switch (document.querySelector(".correct_answers").innerHTML) {
+    case "1":
+      correctAnswerBoardText.innerHTML = arrCorrectAnswers[0];
+      break;
+    case "2":
+      correctAnswerBoardText.innerHTML = arrCorrectAnswers[1];
+      break;
+    case "3":
+      correctAnswerBoardText.innerHTML = arrCorrectAnswers[2];
+      break;
+    case "4":
+      correctAnswerBoardText.innerHTML = arrCorrectAnswers[3];
+      break;
+    case "5":
+      correctAnswerBoardText.innerHTML = arrCorrectAnswers[4];
+      break;
+    case "6":
+      correctAnswerBoardText.innerHTML = arrCorrectAnswers[5];
+      break;
+    case "7":
+      addDataToGift();
+      correctAnswerBoardText.innerHTML = arrCorrectAnswers[6];
+      break;
+    default:
+      break;
+  }
+};
+const correctAnswerReload = (arrNumber) => {
+  for (let i = 0; i < arrNumber.length; i++) {
+    document.querySelector(`.correct-answer-board__text.${arrNumber[i]}`).innerHTML = arrCorrectAnswers[i];
+  }
+};
 let localstorageAnswers = localStorage.getItem("answers");
 let localstoragenumberPuzzle = localStorage.getItem("numberPuzzle");
 if (localstorageAnswers !== null) {
@@ -71,8 +117,8 @@ if (localstorageAnswers !== null) {
   let correctAnswers = arrAnswer.length;
   document.querySelector(`.correct_answers`).innerHTML = correctAnswers;
   document.querySelector(`.quolity`).innerHTML = Math.floor((correctAnswers / totalQuestions) * 100);
+  correctAnswerReload(arrNumber);
 }
-
 btnReset.addEventListener("click", () => {
   arrNumber = [];
   arrAnswer = [];
@@ -153,6 +199,7 @@ if (POPUP.hasAttributes("popup_open")) {
 }
 // popup gift
 const btnPopupGift = document.querySelector(".btn_gift");
+
 btnPopupGift.addEventListener("mousedown", (e) => {
   popupGiftOpen();
 });
@@ -181,6 +228,7 @@ const popupGiftClose = () => {
   POPUP_TITLE.classList.remove("active_title");
   document.querySelector(".popup_reset_btn").style.display = "flex";
   document.querySelector(".popup_img").style.display = "none";
+  document.querySelector(".popup_data").style.display = "none";
   document.querySelector(".popup_description").innerHTML = "Вы уверены что хотите сбросить результат?";
 };
 const valueScore = () => {
@@ -207,6 +255,7 @@ const valueScore = () => {
       textGift = "Завидую вашим знаниям. Вы в одном шаге до приза";
       break;
     case "7":
+      dateFromLocalstorage();
       document.querySelector(".popup_img").style.display = "block";
       textGift = "Поздравляю, Вы настоящий знаток Шагала!";
       break;
@@ -214,3 +263,22 @@ const valueScore = () => {
       break;
   }
 };
+const dateFromLocalstorage = () => {
+  let localstorageDate = localStorage.getItem("date");
+  if (localstorageDate !== null) {
+    date = JSON.parse(localstorageDate);
+    document.querySelector(".popup_data").style.display = "block";
+    document.querySelector(".popup_data").innerHTML = date;
+  }
+}
+
+const addDataToGift = () => {
+  let localstorageDate = localStorage.getItem("date");
+  if (localstorageDate === null) {
+  const date = new Date();
+  const newdate = date.getDate() + '.' + (date.getMonth()+1) + '.' + date.getFullYear() + ' ' + date.getHours() + ':' + date.getMinutes();
+  localStorage.setItem("date", JSON.stringify(newdate));
+  document.querySelector(".popup_data").style.display = "block";
+  document.querySelector(".popup_data").innerHTML = newdate;
+  }
+}
