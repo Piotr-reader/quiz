@@ -1,3 +1,5 @@
+'use strict';
+
 const arrCorrectAnswers = [`Поздравляем! Начало положено, вы&nbsp;разгадали первое
 из&nbsp;семи заданий.`, `Отлично! Два задания из&nbsp;семи уже позади.`, `Почти половина квеста уже пройдена! Три задания из&nbsp;семи
 покорились вам.`, `Ого, вы&nbsp;ответили уже на&nbsp;четыре задания из&nbsp;семи!
@@ -15,16 +17,26 @@ const POPUP_BODY = document.querySelector("body");
 const POPUP = document.querySelector(".popup");
 const POPUP_CLOSE = document.querySelector(".popup_close");
 const POPUP_TITLE = document.querySelector(".popup_title");
-
 let arrNumber = [];
 let arrAnswer = [];
+let textGift = "";
 const allInput = document.querySelectorAll(".form__field");
 const allBtn = document.querySelectorAll(".form__button");
 const checkedAnswer = document.querySelectorAll(".checked_answer");
 const btnReset = document.querySelector(".btn_reset");
 const totalQuestions = allInput.length;
-
+const btnPopupGift = document.querySelector(".btn_gift");
 document.querySelector(`.total_questions`).innerHTML = totalQuestions;
+const addDataToGift = () => {
+  let localstorageDate = localStorage.getItem("date");
+  if (localstorageDate === null) {
+  const date = new Date();
+  const newdate = date.getDate() + '.' + (date.getMonth()+1) + '.' + date.getFullYear() + ' ' + date.getHours() + ':' + date.getMinutes();
+  localStorage.setItem("date", JSON.stringify(newdate));
+  document.querySelector(".popup_data").style.display = "block";
+  document.querySelector(".popup_data").innerHTML = newdate;
+  }
+}
 
 allBtn.forEach((btn) => {
   btn.addEventListener("click", (e) => {
@@ -49,7 +61,7 @@ allBtn.forEach((btn) => {
             let correctAnswers = arrAnswer.length;
             document.querySelector(`.correct_answers`).innerHTML = correctAnswers;
             document.querySelector(`.quolity`).innerHTML = Math.floor((correctAnswers / totalQuestions) * 100);
-            correctAnswer(correctAnswerBoardText);
+            correctAnswerReload(arrNumber)
           } else {
             document.querySelector(`.wrong-answer-board.${numberPuzzle}`).style.display = "block";
             document.querySelector(`.correct-answer-board.${numberPuzzle}`).style.display = "none";
@@ -66,45 +78,31 @@ allBtn.forEach((btn) => {
     });
   });
 });
-
-const correctAnswer = (correctAnswerBoardText) => {
-  switch (document.querySelector(".correct_answers").innerHTML) {
-    case "1":
-      correctAnswerBoardText.innerHTML = arrCorrectAnswers[0];
-      break;
-    case "2":
-      correctAnswerBoardText.innerHTML = arrCorrectAnswers[1];
-      break;
-    case "3":
-      correctAnswerBoardText.innerHTML = arrCorrectAnswers[2];
-      break;
-    case "4":
-      correctAnswerBoardText.innerHTML = arrCorrectAnswers[3];
-      break;
-    case "5":
-      correctAnswerBoardText.innerHTML = arrCorrectAnswers[4];
-      break;
-    case "6":
-      correctAnswerBoardText.innerHTML = arrCorrectAnswers[5];
-      break;
-    case "7":
-      addDataToGift();
-      correctAnswerBoardText.innerHTML = arrCorrectAnswers[6];
-      break;
-    default:
-      break;
-  }
-};
 const correctAnswerReload = (arrNumber) => {
   for (let i = 0; i < arrNumber.length; i++) {
     document.querySelector(`.correct-answer-board__text.${arrNumber[i]}`).innerHTML = arrCorrectAnswers[i];
+    if (document.querySelector(".correct_answers").innerHTML === "7") {
+      document.querySelector(".fireworks-canvas").style.display = "block";
+      addDataToGift();
+      dateFromLocalstorage();
+      startCanvas();
+      setTimeout(() => {
+        POPUP.classList.add("open");
+        POPUP_BODY.classList.add("lock");
+        POPUP_TITLE.classList.add("active_title");
+
+        document.querySelector(".popup_reset_btn").style.display = "none";
+        document.querySelector(".popup_img").style.display = "block";
+        document.querySelector(".popup_description").innerHTML = "Поздравляю, Вы настоящий знаток Шагала!";
+      }, 5000);
+    }
   }
 };
 let localstorageAnswers = localStorage.getItem("answers");
 let localstoragenumberPuzzle = localStorage.getItem("numberPuzzle");
 if (localstorageAnswers !== null) {
-  answers = JSON.parse(localstorageAnswers);
-  numberPuzzle = JSON.parse(localstoragenumberPuzzle);
+  let answers = JSON.parse(localstorageAnswers);
+  let numberPuzzle = JSON.parse(localstoragenumberPuzzle);
   for (let i = 0; i < answers.length; i++) {
     document.getElementById(`${numberPuzzle[i]}`).value = answers[i];
     document.querySelector(`.correct-answer-board.${numberPuzzle[i]}`).style.display = "block";
@@ -165,10 +163,8 @@ if (navbar.hasAttributes("active_burger")) {
 // onload src for iframe
 const iFrameAll = document.querySelectorAll(".puzzle__video");
 const imgVideoAll = document.querySelectorAll(".img_video");
-
 const srcYouTube = "https://www.youtube.com/embed/";
 const srcIFrameArr = ["mCVBrKfyzQY", "704nRRLQesE", "F9FqruAP_mU", "CisKFPrxAhE", "TGbBtAYzetw", "1oxZ4PkOoXQ", "yR534LAcWOI", "wNaeHHKW3RE"];
-
 [...imgVideoAll].forEach((img, index) => {
   img.addEventListener('click', (e) => {
     let src = e.target.nextElementSibling;
@@ -205,8 +201,6 @@ if (POPUP.hasAttributes("popup_open")) {
   });
 }
 // popup gift
-const btnPopupGift = document.querySelector(".btn_gift");
-
 btnPopupGift.addEventListener("mousedown", (e) => {
   popupGiftOpen();
 });
@@ -220,8 +214,7 @@ if (POPUP.hasAttributes("popup_open")) {
     }
   });
 }
-let textGift = "";
-const popupGiftOpen = () => {
+function popupGiftOpen() {
   POPUP.classList.add("open");
   POPUP_BODY.classList.add("lock");
   POPUP_TITLE.classList.add("active_title");
@@ -237,6 +230,7 @@ const popupGiftClose = () => {
   document.querySelector(".popup_img").style.display = "none";
   document.querySelector(".popup_data").style.display = "none";
   document.querySelector(".popup_description").innerHTML = "Вы уверены что хотите сбросить результат?";
+  document.querySelector(".fireworks-canvas").style.display = "none";
 };
 const valueScore = () => {
   switch (document.querySelector(".correct_answers").innerHTML) {
@@ -253,7 +247,7 @@ const valueScore = () => {
       textGift = "Вот это запал! Ещё немного и Вы у цели.";
       break;
     case "4":
-      textGift = "Круто!!!";
+      textGift = "Круто!!! Оствалось разгадать всего три вопроса.";
       break;
     case "5":
       textGift = "Этого не может быть. Супер эрудиция!";
@@ -270,22 +264,33 @@ const valueScore = () => {
       break;
   }
 };
-const dateFromLocalstorage = () => {
+function dateFromLocalstorage() {
   let localstorageDate = localStorage.getItem("date");
   if (localstorageDate !== null) {
-    date = JSON.parse(localstorageDate);
+    let date = JSON.parse(localstorageDate);
     document.querySelector(".popup_data").style.display = "block";
     document.querySelector(".popup_data").innerHTML = date;
   }
 }
 
-const addDataToGift = () => {
-  let localstorageDate = localStorage.getItem("date");
-  if (localstorageDate === null) {
-  const date = new Date();
-  const newdate = date.getDate() + '.' + (date.getMonth()+1) + '.' + date.getFullYear() + ' ' + date.getHours() + ':' + date.getMinutes();
-  localStorage.setItem("date", JSON.stringify(newdate));
-  document.querySelector(".popup_data").style.display = "block";
-  document.querySelector(".popup_data").innerHTML = newdate;
-  }
+function startCanvas() {
+  var firework = JS_FIREWORKS.Fireworks({
+    id : 'fireworks-canvas',
+    hue : 120,
+    particleCount : 50,
+    delay : 0,
+    minDelay : 20,
+    maxDelay : 40,
+    boundaries : {
+        top: 50,
+        bottom: 240,
+        left: 50,
+        right: 590
+    },
+    fireworkSpeed : 2,
+    fireworkAcceleration : 1.05,
+    particleFriction : .95,
+    particleGravity : 1.5
+});
+firework.start();
 }

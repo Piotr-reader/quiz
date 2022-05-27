@@ -383,7 +383,9 @@
   display: none;
   color: #008000;
 }
-
+.navbar_width li span {
+  color: #008000;
+}
 .popup {
   position: fixed;
   width: 100%;
@@ -406,6 +408,7 @@
 .popup.open {
   opacity: 1;
   visibility: visible;
+  z-index: 2;
 }
 .popup.open .popup_content {
   opacity: 1;
@@ -491,4 +494,13 @@
 .popup_text {
   padding: 20px;
   text-align: center;
+}
+.fireworks-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: none;
+  z-index: 0;
 }
