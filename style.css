@@ -1,9 +1,10 @@
 .page {
-  background-color: #2a2c2f;
+  background-color: #fff;
   max-width: 360px;
   margin: 0 auto;
-  font-family: Inter, Arial, Helvetica, sans-serif;
-  color: #fff;
+  font-family: 'Neucha', cursive;
+  /* font-family: Inter, Arial, Helvetica, sans-serif; */
+  color: #2a2c2f;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -15,7 +16,7 @@
   justify-content: space-between;
   align-items: center;
   position: fixed;
-  background-color: #2a2c2f;
+  background-color: #fff;
   width: 360px;
   padding: 10px;
   top: 0;
@@ -79,7 +80,7 @@
 }
 .puzzle {
   margin: 0 auto 40px;
-  padding-top: 115px;
+  padding-top: 95px;
 }
 .puzzle__number {
   font-size: 18px;
@@ -125,19 +126,19 @@
   padding: 5px;
   display: block;
   margin: 0;
-  background-color: #2a2c2f;
-  color: #fff;
-  border: 3px #fff solid;
+  background-color: #fff;
+  color: #2a2c2f;
+  border: 3px #2a2c2f solid;
   border-radius: 4px;
   cursor: pointer;
 }
 .btn_gift {
-  padding: 4px 28px;
+  padding: 4px 22px;
   margin-top: 5px;
 }
 .wrong-answer-board {
   box-shadow: 0 0 8px rgb(230, 0, 0);
-  background-color: rgb(43, 43, 43);
+  background-color: #fff;
   border-radius: 3px;
   padding: 4px 6px;
   box-sizing: border-box;
@@ -153,7 +154,7 @@
 }
 .correct-answer-board {
   box-shadow: 0 0 8px rgb(0, 230, 0);
-  background-color: rgb(43, 43, 43);
+  background-color: #fff;
   border-radius: 3px;
   padding: 4px 6px;
   box-sizing: border-box;
@@ -161,6 +162,7 @@
 }
 .correct-answer-board__text {
   font-size: 14px;
+  color: #2a2c2f;
   line-height: 1.25;
   margin: 0 0 10px;
 }
@@ -169,7 +171,7 @@
 }
 .hint-board {
   box-shadow: 0 0 8px rgb(230, 230, 0);
-  background-color: rgb(43, 43, 43);
+  background-color: #fff;
   border-radius: 3px;
   padding: 4px 6px;
   box-sizing: border-box;
@@ -197,9 +199,18 @@
   font-weight: 700;
   text-align: center;
 }
+.img_video {
+  max-width: 100%;
+  max-height: 202px;
+}
+.img_video:hover {
+  cursor: pointer;
+  transform: scale(1.1);
+  }
 .puzzle__video {
   max-width: 100%;
   max-height: 202px;
+  display: none;
 }
 .table {
   font-size: 14px;
@@ -230,7 +241,7 @@
   text-align: center;
 }
 .footer__link {
-  color: #fff;
+  color: #2a2c2f;
   text-decoration: none;
   font-size: 16px;
   line-height: 1;
@@ -238,7 +249,7 @@
 }
 .footer__link {
   text-decoration: none;
-  color: #fff;
+  color: #2a2c2f;
 }
 .footer__link:hover {
   text-decoration: none;
@@ -264,12 +275,13 @@
   height: 22px;
   margin-right: 10px;
   margin-left: 10px;
+  transition: 0.3s ease-in;
 }
 .header_burger::before,
 .header_burger::after {
   content: "";
   height: 2px;
-  background-color: #fff;
+  background-color: #2a2c2f;
   position: absolute;
   width: 100%;
   left: 0;
@@ -284,7 +296,7 @@
 }
 .header_burger span {
   height: 2px;
-  background-color: #fff;
+  background-color: #2a2c2f;
   position: absolute;
   width: 100%;
   left: 0;
@@ -316,21 +328,24 @@
 .navbar_width {
   width: 360px;
   position: relative;
-  background-color: #292929;
+  background-color: #fff;
   height: 100%;
   margin: 0 auto;
   padding: 0;
+  transition: 0.3s ease-in;
 }
 .navbar_text {
   font-size: 32px;
   margin-left: 0px;
   margin-bottom: 10px;
-  color: #fff;
+  color: #2a2c2f;
   text-decoration: none;
+  transition: 0.1s ease-in;
 }
 .navbar_text:hover {
   text-decoration: none;
-  color: beige;
+  color: #93979d;
+  transition: 0.1s ease-in;
 }
 .active_burger {
   left: 0px;
@@ -366,7 +381,7 @@
   left: 80px;
   padding-right: 5px;
   display: none;
-  color: green;
+  color: #008000;
 }
 
 .popup {
@@ -458,14 +473,14 @@
   box-sizing: border-box;
   border: 1px solid grey;
   display: none;
-  color: black;
+  color: 2a2c2f;
 }
 .popup_description {
   font-family: "Georgia";
   font-style: normal;
   font-weight: 400;
   letter-spacing: 0.1em;
-  color: #000000;
+  color: #2a2c2f;
   margin: 40px 0;
   max-width: 300px;
   font-size: 15px;

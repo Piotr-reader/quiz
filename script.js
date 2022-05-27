@@ -33,7 +33,7 @@ allBtn.forEach((btn) => {
         let numberPuzzle = input.id;
         let inputVal = input.value;
         if (btn.classList.contains("form__button_type_submit")) {
-          if (inputVal.toLowerCase() === input.dataset.answer) {
+          if (inputVal.toLowerCase().trim() === input.dataset.answer) {
             const correctAnswerBoardText = document.querySelector(`.correct-answer-board__text.${numberPuzzle}`);
             document.querySelector(`.correct-answer-board.${numberPuzzle}`).style.display = "block";
             document.querySelector(`.checked_answer.${numberPuzzle}`).style.display = "block";
@@ -164,14 +164,21 @@ if (navbar.hasAttributes("active_burger")) {
 }
 // onload src for iframe
 const iFrameAll = document.querySelectorAll(".puzzle__video");
+const imgVideoAll = document.querySelectorAll(".img_video");
+
 const srcYouTube = "https://www.youtube.com/embed/";
-const srcIFrameArr = ["704nRRLQesE", "704nRRLQesE", "F9FqruAP_mU", "CisKFPrxAhE", "TGbBtAYzetw", "1oxZ4PkOoXQ", "yR534LAcWOI", "wNaeHHKW3RE"];
-window.onload = function () {
-  for (let i = 0; i < srcIFrameArr.length; i++) {
-    [...iFrameAll][i].setAttribute("src", `${srcYouTube}${srcIFrameArr[i]}`);
-    // [...iFrameAll][i].setAttribute("sandbox", "");
-  }
-};
+const srcIFrameArr = ["mCVBrKfyzQY", "704nRRLQesE", "F9FqruAP_mU", "CisKFPrxAhE", "TGbBtAYzetw", "1oxZ4PkOoXQ", "yR534LAcWOI", "wNaeHHKW3RE"];
+
+[...imgVideoAll].forEach((img, index) => {
+  img.addEventListener('click', (e) => {
+    let src = e.target.nextElementSibling;
+    e.target.style.display = "none";
+    iFrameAll[index].style.display = "block"
+    src.setAttribute("src", `${srcYouTube}${srcIFrameArr[index]}`);
+  })
+
+})
+
 // popup reset score
 btnPopupReset.addEventListener("mousedown", (e) => {
   POPUP.classList.add("open");
