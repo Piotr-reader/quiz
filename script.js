@@ -1,4 +1,3 @@
-'use strict';
 
 const arrCorrectAnswers = [`Поздравляем! Начало положено, вы&nbsp;разгадали первое
 из&nbsp;семи заданий.`, `Отлично! Два задания из&nbsp;семи уже позади.`, `Почти половина квеста уже пройдена! Три задания из&nbsp;семи
@@ -274,8 +273,9 @@ function dateFromLocalstorage() {
   }
 }
 
+// canvas
 function startCanvas() {
-  var firework = JS_FIREWORKS.Fireworks({
+  let firework = JS_FIREWORKS.Fireworks({
     id : 'fireworks-canvas',
     hue : 120,
     particleCount : 50,
@@ -292,6 +292,6 @@ function startCanvas() {
     fireworkAcceleration : 1.05,
     particleFriction : .95,
     particleGravity : 1.5
-});
+  });
 firework.start();
 }

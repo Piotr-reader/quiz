@@ -1,3 +1,4 @@
+
 var JS_FIREWORKS = JS_FIREWORKS || {};
 
 /**
