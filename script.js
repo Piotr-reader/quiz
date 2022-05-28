@@ -162,11 +162,12 @@ if (navbar.hasAttributes("active_burger")) {
 }
 // onload src for iframe
 const iFrameAll = document.querySelectorAll(".puzzle__video");
-const imgVideoAll = document.querySelectorAll(".img_video");
+const imgVideoAll = document.querySelectorAll(".picture");
 const srcYouTube = "https://www.youtube.com/embed/";
 const srcIFrameArr = ["mCVBrKfyzQY", "704nRRLQesE", "F9FqruAP_mU", "CisKFPrxAhE", "TGbBtAYzetw", "1oxZ4PkOoXQ", "yR534LAcWOI", "wNaeHHKW3RE"];
 [...imgVideoAll].forEach((img, index) => {
   img.addEventListener('click', (e) => {
+
     let src = e.target.nextElementSibling;
     e.target.style.display = "none";
     iFrameAll[index].style.display = "block"
