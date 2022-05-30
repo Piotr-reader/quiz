@@ -50,7 +50,6 @@ allBtn.forEach((btn) => {
             document.querySelector(`.checked_answer.${numberPuzzle}`).style.display = "block";
             document.querySelector(`.wrong-answer-board.${numberPuzzle}`).style.display = "none";
             document.querySelector(`.hint-board.${numberPuzzle}`).style.display = "none";
-            // btn.setAttribute("disabled", "disabled");
             arrNumber.push(numberPuzzle);
             arrNumber = [...new Set(arrNumber)];
             localStorage.setItem("numberPuzzle", JSON.stringify(arrNumber));
@@ -89,10 +88,10 @@ const correctAnswerReload = (arrNumber) => {
         POPUP.classList.add("open");
         POPUP_BODY.classList.add("lock");
         POPUP_TITLE.classList.add("active_title");
-
+        stopCanvas();
         document.querySelector(".popup_reset_btn").style.display = "none";
         document.querySelector(".popup_img").style.display = "block";
-        document.querySelector(".popup_description").innerHTML = "Поздравляю, Вы настоящий знаток Шагала!";
+        document.querySelector(".popup_description").innerHTML = "Поздравляем, Ваш приз находится у администратора!";
       }, 5000);
     }
   }
@@ -137,7 +136,6 @@ const burger = document.querySelector(".header_burger");
 const navbar = document.querySelector(".navbar");
 const body = document.querySelector("body");
 const navbarText = document.querySelectorAll(".navbar_text");
-
 burger.addEventListener("mousedown", () => {
   navbar.classList.toggle("active_burger");
   burger.classList.toggle("active_burger_burger");
@@ -223,45 +221,23 @@ function popupGiftOpen() {
   document.querySelector(".popup_description").innerHTML = textGift;
 };
 const popupGiftClose = () => {
+  stopCanvas();
   POPUP.classList.remove("open");
   POPUP_BODY.classList.remove("lock");
   POPUP_TITLE.classList.remove("active_title");
   document.querySelector(".popup_reset_btn").style.display = "flex";
   document.querySelector(".popup_img").style.display = "none";
   document.querySelector(".popup_data").style.display = "none";
-  document.querySelector(".popup_description").innerHTML = "Вы уверены что хотите сбросить результат?";
   document.querySelector(".fireworks-canvas").style.display = "none";
+  document.querySelector(".popup_description").innerHTML = "Вы уверены что хотите сбросить результат?";
 };
 const valueScore = () => {
-  switch (document.querySelector(".correct_answers").innerHTML) {
-    case "0":
-      textGift = "Вы серъёзно? Ответьте хотябы на несколько вопросов.";
-      break;
-    case "1":
-      textGift = "Уже что-то! Но этого все равно слишком мало.";
-      break;
-    case "2":
-      textGift = "Да вы прям знаток искусства! Не стоит останавливаться.";
-      break;
-    case "3":
-      textGift = "Вот это запал! Ещё немного и Вы у цели.";
-      break;
-    case "4":
-      textGift = "Круто!!! Оствалось разгадать всего три вопроса.";
-      break;
-    case "5":
-      textGift = "Этого не может быть. Супер эрудиция!";
-      break;
-    case "6":
-      textGift = "Завидую вашим знаниям. Вы в одном шаге до приза";
-      break;
-    case "7":
-      dateFromLocalstorage();
-      document.querySelector(".popup_img").style.display = "block";
-      textGift = "Поздравляю, Вы настоящий знаток Шагала!";
-      break;
-    default:
-      break;
+  if (document.querySelector(".correct_answers").innerHTML === "7") {
+    dateFromLocalstorage();
+    document.querySelector(".popup_img").style.display = "block";
+    textGift = "Поздравляем, Ваш приз находится у администратора!";
+  } else {
+    textGift = "Вам нужно верно ответить на все семь вопросов.";
   }
 };
 function dateFromLocalstorage() {
@@ -294,4 +270,25 @@ function startCanvas() {
     particleGravity : 1.5
   });
 firework.start();
+}
+function stopCanvas() {
+  let firework = JS_FIREWORKS.Fireworks({
+    id : 'fireworks-canvas',
+    hue : 120,
+    particleCount : 50,
+    delay : 0,
+    minDelay : 20,
+    maxDelay : 40,
+    boundaries : {
+        top: 50,
+        bottom: 240,
+        left: 50,
+        right: 590
+    },
+    fireworkSpeed : 2,
+    fireworkAcceleration : 1.05,
+    particleFriction : .95,
+    particleGravity : 1.5
+  });
+firework.stop();
 }
