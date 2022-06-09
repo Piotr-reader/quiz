@@ -184,6 +184,13 @@
 }
 .hint-board__span-accent {
   font-weight: 700;
+  padding-right: 5px;
+}
+.answer_text{
+  display: flex;
+  justify-content: end;
+  transform: rotate(180deg);
+  font-style: italic;
 }
 .hint-board__text:last-of-type {
   margin: 0;
