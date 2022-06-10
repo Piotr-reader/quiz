@@ -130,6 +130,7 @@ btnReset.addEventListener("click", () => {
   localStorage.clear();
   allInput.forEach((input) => {
     input.value = "";
+    input.removeAttribute("disabled");
     document.querySelector(`.correct-answer-board.${input.id}`).style.display = "none";
     document.querySelector(`.checked_answer.${input.id}`).style.display = "none";
     document.querySelector(`.correct_answers`).innerHTML = 0;
