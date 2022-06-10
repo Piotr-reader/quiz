@@ -9,6 +9,15 @@ const arrCorrectAnswers = [`Поздравляем! Начало положен�
 в&nbsp;своих социальных сетях, отметив при этом нас&mdash; нам будет о-о-очень приятно! В&nbsp;любом
 случае, будем рады если подпишетесь на&nbsp;наши социальные сети, которые найдете внизу страницы
 <span>&#129303</span>`];
+const answersArr = {
+  1: ["2021"],
+  2: ["канатоходец", "канатоходцы"],
+  3: ["1е2д3г4в5б6а", "1е 2д 3г 4в 5б 6а"],
+  4: ["лев"],
+  5: ["эжен", "делакруа", "эжен делакруа", "делакруа эжен"],
+  6: ["17"],
+  7: ["арколе", "арколь"],
+};
 const btnPopupReset = document.querySelector(".btn__popup_reset");
 const btnCancel = document.querySelector(".btn_cancel");
 const BODY = document.querySelector(".popup_body");
@@ -39,13 +48,14 @@ const addDataToGift = () => {
 
 allBtn.forEach((btn) => {
   btn.addEventListener("click", (e) => {
-    allInput.forEach((input) => {
+    allInput.forEach((input, index) => {
       if (btn.classList.contains(input.id)) {
         let numberPuzzle = input.id;
         let inputVal = input.value;
         if (btn.classList.contains("form__button_type_submit")) {
-          if (inputVal.toLowerCase().trim() === input.dataset.answer) {
+          if (answersArr[index+1].includes(inputVal.trim().toLowerCase())) {
             const correctAnswerBoardText = document.querySelector(`.correct-answer-board__text.${numberPuzzle}`);
+            input.setAttribute("disabled", "disabled");
             document.querySelector(`.correct-answer-board.${numberPuzzle}`).style.display = "block";
             document.querySelector(`.checked_answer.${numberPuzzle}`).style.display = "block";
             document.querySelector(`.wrong-answer-board.${numberPuzzle}`).style.display = "none";
@@ -104,6 +114,7 @@ if (localstorageAnswers !== null) {
     document.getElementById(`${numberPuzzle[i]}`).value = answers[i];
     document.querySelector(`.correct-answer-board.${numberPuzzle[i]}`).style.display = "block";
     document.querySelector(`.checked_answer.${numberPuzzle[i]}`).style.display = "block";
+    document.querySelector(`#${numberPuzzle[i]}`).setAttribute("disabled", "disabled");
     arrNumber.push(numberPuzzle[i]);
     arrNumber = [...new Set(arrNumber)];
     arrAnswer.push(answers[i]);
