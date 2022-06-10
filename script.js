@@ -58,7 +58,6 @@ allBtn.forEach((btn) => {
             localStorage.setItem("answers", JSON.stringify(arrAnswer));
             let correctAnswers = arrAnswer.length;
             document.querySelector(`.correct_answers`).innerHTML = correctAnswers;
-            document.querySelector(`.quolity`).innerHTML = Math.floor((correctAnswers / totalQuestions) * 100);
             correctAnswerReload(arrNumber)
           } else {
             document.querySelector(`.wrong-answer-board.${numberPuzzle}`).style.display = "block";
@@ -91,7 +90,7 @@ const correctAnswerReload = (arrNumber) => {
         stopCanvas();
         document.querySelector(".popup_reset_btn").style.display = "none";
         document.querySelector(".popup_img").style.display = "block";
-        document.querySelector(".popup_description").innerHTML = "Поздравляем, Ваш приз находится у администратора!";
+        document.querySelector(".popup_description").innerHTML = arrCorrectAnswers[arrCorrectAnswers.length-1];
       }, 5000);
     }
   }
@@ -112,7 +111,6 @@ if (localstorageAnswers !== null) {
   }
   let correctAnswers = arrAnswer.length;
   document.querySelector(`.correct_answers`).innerHTML = correctAnswers;
-  document.querySelector(`.quolity`).innerHTML = Math.floor((correctAnswers / totalQuestions) * 100);
   correctAnswerReload(arrNumber);
 }
 btnReset.addEventListener("click", () => {
@@ -124,7 +122,6 @@ btnReset.addEventListener("click", () => {
     document.querySelector(`.correct-answer-board.${input.id}`).style.display = "none";
     document.querySelector(`.checked_answer.${input.id}`).style.display = "none";
     document.querySelector(`.correct_answers`).innerHTML = 0;
-    document.querySelector(`.quolity`).innerHTML = 0;
   });
   POPUP.classList.remove("open");
   POPUP_BODY.classList.remove("lock");
@@ -235,7 +232,7 @@ const valueScore = () => {
   if (document.querySelector(".correct_answers").innerHTML === "7") {
     dateFromLocalstorage();
     document.querySelector(".popup_img").style.display = "block";
-    textGift = "Поздравляем, Ваш приз находится у администратора!";
+    textGift = arrCorrectAnswers[arrCorrectAnswers.length-1];
   } else {
     textGift = "Вам нужно верно ответить на все семь вопросов.";
   }
